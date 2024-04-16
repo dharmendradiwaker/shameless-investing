@@ -1,0 +1,35 @@
+# Magic Formula -
+
+Earning Yield = it showes the cheapness of stock in valuation prefrence.
+The Higher the Earning yield means cheaper the company price.
+
+Earning yield = EBIT(earning before interest tax)/ Enterprise Value
+
+Enterprise value = (Market Capitalization + Debt) - Cash Equivelent
+
+# Identitifation of Good companies 
+To identify the good company we can use the ROC(Return on capital).The more higher the Return
+on capital is more efficient the company.
+
+ROC = EDIT/ (Net Fixed Assets + Net Working Capital)
+
+*Multiple with 100 to get the result in %.
+
+Net Working capital = current assests - current liailities
+
+
+#Law of magic Formula
+1. Include stocks with market cap > 5000 Crs
+2. Exclude Financial & Utility Stocks 
+3. Exclude Foreign companies and ADRs
+4. Calculate company's Earning yield 
+5. Calculate company's Return on Capital
+6. Rank according to Earning Yield & ROC
+7. Invest in 20-30 Highest Ranked companies
+8. Rebalance Portfolio Once Per Year
+9. Implement For Long Term, Atleast 5+ Years.
+
+10. Never blindly trust on screener, do your check on your own
+
+
+
