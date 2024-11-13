@@ -22,8 +22,7 @@ options.headless = True
 
 
 
-##Function to get the list of superstars of investing
-
+##Function to get the list of superstars of investing and their investested companies
 def get_data(url,driver):
     #getting all data from first 2-3 col of superstars
     try:
@@ -61,7 +60,7 @@ def get_data(url,driver):
         df = pd.DataFrame(data)
             
             # Save DataFrame to Excel
-        df.to_excel("scraped2_data.xlsx", index=False)
+        df.to_excel("fresh_data_new.xlsx", index=False)
 
         driver.quit()
 
@@ -71,6 +70,9 @@ def get_data(url,driver):
 
 
 # Function to get the portfolio of these investors 
+"""
+By using this function you can get the investors full Portfolio
+"""
 def get_investortdata(links):
     data = {'Name': [], 'stocks': [],'tech data':[]}
     try:
@@ -109,9 +111,7 @@ def get_investortdata(links):
     
     df['tech data'] = df['tech data'].apply(lambda x: x if isinstance(x, str) else '\n'.join(x))
     
-    df.to_excel(f"portfolio5.xlsx", index=False)
-
-
+    df.to_excel(f"portfolio_new.xlsx", index=False)
 
 
 
@@ -139,18 +139,18 @@ def urls(url):
     google_field.click()
     
     email_field = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, '//input[@type="email"]')))
-    email_field.send_keys("d.lightningleap@gmail.com")
+    email_field.send_keys("") ## Enter Your email id
     time.sleep(3)
 
     next_button = WebDriverWait(driver, 8).until(EC.element_to_be_clickable((By.XPATH, "//button[@class='VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe DuMIQc LQeN7 BqKGqe Jskylb TrZEUc lw1w4b']")))
     next_button.click()
     # time.sleep(5)
     password_field = WebDriverWait(driver, 50).until(EC.visibility_of_element_located((By.XPATH, '//input[@type="password"]')))
-    password_field.send_keys("Manish bhai")
+    password_field.send_keys("") # enter your password
     # # Find the sign-in button and click it
     pass_button = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//button[@class="VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe DuMIQc LQeN7 BqKGqe Jskylb TrZEUc lw1w4b"]')))
     pass_button.click()
-    time.sleep(3)
+    time.sleep(120)
     no_button = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//option[@value="100"]')))
     no_button.click()
     time.sleep(3)
@@ -169,10 +169,16 @@ def urls(url):
         return data
     
 
-# links= urls(url)
-# print(get_investortdata(links))
+links= urls(url)
+print(get_investortdata(links))
 driver.quit()
+
+
+
 #Function to get the all companies's finacial data
+"""
+By using this function you can get the all finacial data of a company
+"""
 url = 'https://www.screener.in/login/?'
 def get_company_data(url):
     all_company_data = []
@@ -192,12 +198,12 @@ def get_company_data(url):
     button.click()
     #Signin into a google account
     email_field = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, "//input[@class='whsOnd zHQkBf']")))
-    email_field.send_keys("d.lightningleap@gmail.com")
+    email_field.send_keys("") ## Enter Your Email id
     next_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[@class='VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe DuMIQc LQeN7 BqKGqe Jskylb TrZEUc lw1w4b']")))
     next_button.click()
     # Enter the password
     password_field = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, "//input[@type='password']")))
-    password_field.send_keys("Manish bhai")
+    password_field.send_keys("") #Enter your password
 
     #Enter the next button
     next_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[@class='VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe DuMIQc LQeN7 BqKGqe Jskylb TrZEUc lw1w4b']")))
@@ -316,6 +322,6 @@ def get_company_data(url):
                                              "PAT 12M Rs.Cr.","Debt / Eq","Prom. Hold. %"])
 
     # Save the DataFrame to an Excel file
-    df.to_excel("company_data2.xlsx", index=False)
+    df.to_excel("fresh_company_data2.xlsx", index=False)
 
 # print(get_company_data(url))
